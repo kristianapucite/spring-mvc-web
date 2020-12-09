@@ -8,7 +8,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "car")
+@Table(name = "owner")
 public class Owner {
     @Id
     @GeneratedValue

@@ -5,6 +5,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p>asdfasdfasdf</p>
+<p>Owners</p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+    <tr/>
+
+    <tr th:each="owner: ${owners}">
+        <td th:text="${owner.id}" />
+        <td th:text="${owner.name}" />
+        <td th:text="${owner.surname}" />
+    </tr>
+</table>
 </body>
 </html>
