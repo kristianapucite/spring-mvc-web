@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${title}"></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+<a href="/cars" title="Get car list">Cars</a>
+<a href="/owners" title="Get owners list">Owners</a>
+<h1 th:text="${title}"></h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Surname</th>
+    <tr/>
+
+    <tr th:each="owner: ${owners}">
+        <td th:text="${owner.getId()}" />
+        <td th:text="${owner.getName()}" />
+        <td th:text="${owner.getSurname()}" />
+    </tr>
+</table>
+<img th:src="@{/img/123.jpg}">
+</body>
+</html>

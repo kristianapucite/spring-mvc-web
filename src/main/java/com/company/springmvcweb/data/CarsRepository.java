@@ -11,10 +11,10 @@ public class CarsRepository {
 
     public CarsRepository() {
         try {
-            //com/company/springmvcweb/data/hibernate/hibernate.cfg.xml
             factory = new Configuration().
                     configure().
                             addAnnotatedClass(Owner.class).
+                            addAnnotatedClass(Car.class).
                             buildSessionFactory();
         } catch (Throwable ex) {
             System.err.println("Failed to create sessionFactory object." + ex);
@@ -22,11 +22,25 @@ public class CarsRepository {
         }
     }
 
-    public Iterable<Owner> list() {
+    public Iterable<Owner> getOwners() {
         var session = factory.openSession();
 
         try {
             return session.createQuery("FROM Owner").list();
+        } catch (HibernateException exception) {
+            System.err.println(exception);
+        } finally {
+            session.close();
+        }
+
+        return new ArrayList<>();
+    }
+
+    public Iterable<Car> getCars() {
+        var session = factory.openSession();
+
+        try {
+            return session.createQuery("FROM Car").list();
         } catch (HibernateException exception) {
             System.err.println(exception);
         } finally {
