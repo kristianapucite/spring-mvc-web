@@ -14,13 +14,15 @@
         <th>Id</th>
         <th>Number</th>
         <th>Vin Number</th>
+        <th>Owner</th>
     </tr>
     <tr th:each="car: ${cars}">
         <td th:text="${car.getId()}"/>
         <td th:text="${car.getNumber()}"/>
         <td th:text="${car.getVinNumber()}"/>
+        <td th:text="${car.getOwner() != null ? car.getOwner().getName() : ''}"/>
     </tr>
 </table>
-<img th:src="@{/img/123.jpg}">
+<!--<img th:src="@{/img/123.jpg}">-->
 </body>
 </html>
