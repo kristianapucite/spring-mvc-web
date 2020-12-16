@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${title}"></title>
@@ -14,7 +14,7 @@
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/cars">
                 <img th:src="@{/img/van.svg}" alt="Cars" width="30">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,28 +32,22 @@
             </div>
         </div>
     </nav>
+
     <h1 th:text="${title}"></h1>
-    <!--<form method="post" name="searchDto" action="/owners">-->
-    <!--    <input name="name"/>-->
-    <!--    <input type="submit" value="Search"/>-->
-    <!--</form>-->
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Surname</th>
-            <tr/>
-        </thead>
-        <tbody>
-            <tr th:each="owner: ${owners}">
-                <td th:text="${owner.getId()}"/>
-                <td th:text="${owner.getName()}"/>
-                <td th:text="${owner.getSurname()}"/>
-            </tr>
-        </tbody>
-    </table>
-<!--    <img th:src="@{/img/123.jpg}">-->
+
+    <form method="post" th:action="${'/cars/' + id}" name="updateDto">
+        <div class="mb-3">
+            <label for="number" class="form-label">Number</label>
+            <input type="text" class="form-control" name="number" id="number">
+        </div>
+        <div class="mb-3">
+            <label for="vinNumber" class="form-label">Vin number</label>
+            <input type="text" class="form-control" name="vinNumber" id="vinNumber">
+        </div>
+        <a href="/cars" class="btn btn-danger" role="button">Cancel</a>
+        <button type="submit" class="btn btn-success">Save</button>
+    </form>
+
 </div>
 </body>
 </html>

@@ -51,6 +51,30 @@ public class CarsRepository {
         return new ArrayList<>();
     }
 
+    public Object getCar(int id) {
+        var session = factory.openSession();
+
+        try {
+            //var car = session.get(Car.class, id);
+
+            var sql = "FROM Car where id = :id";
+            var query = session.createQuery(sql);
+            query.setParameter("id", id);
+
+            var items = query.list();
+
+            //var item = items.get(0);
+
+            return items.size() > 0 ? items.get(0) : null;
+        } catch (HibernateException exception) {
+            System.err.println(exception);
+        } finally {
+            session.close();
+        }
+
+        return null;
+    }
+
     public Iterable<Car> getCars(CarSearchDto searchDto) {
         var session = factory.openSession();
 

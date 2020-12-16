@@ -34,26 +34,38 @@
     </nav>
 
     <h1 th:text="${title}"></h1>
+
     <form method="post" action="/cars" name="searchDto">
-        <label>Number:</label>
-        <input type="text" name="number"><br>
-        <label>Vin number:</label>
-        <input type="text" name="vinNumber">
-        <input type="submit" value="Search">
+        <div class="mb-3">
+            <label for="number" class="form-label">Number</label>
+            <input type="text" class="form-control" name="number" id="number">
+        </div>
+        <div class="mb-3">
+            <label for="vinNumber" class="form-label">Vin number</label>
+            <input type="text" class="form-control" name="vinNumber" id="vinNumber">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
     </form>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Number</th>
-            <th>Vin Number</th>
-            <th>Owner</th>
-        </tr>
-        <tr th:each="car: ${cars}">
-            <td th:text="${car.getId()}"/>
-            <td th:text="${car.getNumber()}"/>
-            <td th:text="${car.getVinNumber()}"/>
-            <td th:text="${car.getOwner() != null ? car.getOwner().getName() : ''}"/>
-        </tr>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Number</th>
+                <th>Vin Number</th>
+                <th>Owner</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="car: ${cars}">
+                <td th:text="${car.getId()}"/>
+                <td>
+                    <a th:href="${'/cars/'+car.getId()}" th:text="${car.getNumber()}"></a>
+                </td>
+                <td th:text="${car.getVinNumber()}"/>
+                <td th:text="${car.getOwner() != null ? car.getOwner().getName() : ''}"/>
+            </tr>
+        </tbody>
     </table>
     <!--<img th:src="@{/img/123.jpg}">-->
 </div>
