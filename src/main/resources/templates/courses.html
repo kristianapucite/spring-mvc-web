@@ -35,17 +35,31 @@
 
     <h1 th:text="${title}"></h1>
 
-<!--    <form method="post" action="/courses" name="searchDto">-->
-<!--        <div class="mb-3">-->
-<!--            <label for="number" class="form-label">Number</label>-->
-<!--            <input type="text" class="form-control" name="number" id="number">-->
-<!--        </div>-->
-<!--        <div class="mb-3">-->
-<!--            <label for="vinNumber" class="form-label">Vin number</label>-->
-<!--            <input type="text" class="form-control" name="vinNumber" id="vinNumber">-->
-<!--        </div>-->
-<!--        <button type="submit" class="btn btn-primary">Search</button>-->
-<!--    </form>-->
+    <form method="post" action="/courses" name="searchDto">
+        <div class="mb-3">
+
+            <label for="industry">Choose industry:</label>
+            <select id="industry" name="industry">
+                <option></option>
+                <option value="CRAFTS">CRAFTS</option>
+                <option value="METALWORKING">METALWORKING</option>
+                <option value="LANGUAGES">LANGUAGES</option>
+                <option value="WOODWORKING">WOODWORKING</option>
+                <option value="MANAGEMENT">MANAGEMENT</option>
+            </select>
+
+            <label for="level">Choose level:</label>
+            <select id="level" name="level">
+                <option></option>
+                <option value="BEGINNER">BEGINNER</option>
+                <option value="INTERMEDIATE">INTERMEDIATE</option>
+                <option value="ADVANCED">ADVANCED</option>
+            </select>
+
+        </div>
+
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
 
     <table>
             <tr>
